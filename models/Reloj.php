@@ -200,16 +200,22 @@ class Reloj {
     /**
      * Obtener los productos más vendidos
      */
-    public function obtenerTopVendidos($limit = 5) {
-        $query = "SELECT r.*, i.cantidad_vendida, i.cantidad_disponible 
+    public function obtenerTopVendidos($limit = 5, $dias = 30) {
+        $query = "SELECT r.*, i.cantidad_disponible, COALESCE(SUM(ip.cantidad), 0) as cantidad_vendida 
                   FROM " . $this->table . " r 
                   JOIN inventario i ON r.id = i.reloj_id 
-                  WHERE i.cantidad_vendida > 0 
-                  ORDER BY i.cantidad_vendida DESC 
+                  JOIN items_pedido ip ON r.id = ip.reloj_id
+                  JOIN pedidos p ON ip.pedido_id = p.id
+                  WHERE p.estado NOT IN ('cancelado')
+                  AND p.fecha_pedido >= DATE_SUB(CURRENT_DATE(), INTERVAL :dias DAY)
+                  GROUP BY r.id
+                  HAVING cantidad_vendida > 0
+                  ORDER BY cantidad_vendida DESC 
                   LIMIT :limit";
         
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':dias', $dias, PDO::PARAM_INT);
         $stmt->execute();
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -442,16 +442,18 @@ class Pedido {
     /**
      * Obtener ventas por categoría
      */
-    public function obtenerVentasPorCategoria() {
+    public function obtenerVentasPorCategoria($dias = 30) {
         $query = "SELECT r.categoria, SUM(ip.cantidad) as total_vendidos, COALESCE(SUM(ip.subtotal), 0) as ingresos 
                   FROM items_pedido ip 
                   JOIN relojes r ON ip.reloj_id = r.id 
                   JOIN " . $this->table . " p ON ip.pedido_id = p.id 
                   WHERE p.estado NOT IN ('cancelado') 
+                  AND p.fecha_pedido >= DATE_SUB(CURRENT_DATE(), INTERVAL :dias DAY)
                   GROUP BY r.categoria 
                   ORDER BY ingresos DESC";
         
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':dias', $dias, PDO::PARAM_INT);
         $stmt->execute();
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
