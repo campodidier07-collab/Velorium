@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   VARIABLES VELORIUM PREMIUM (BOOTSTRAP OVERRIDE)
+   ============================================ */
+:root {
+    --bs-primary: #1a2332; /* Navy */
+    --bs-secondary: #2a374c; /* Navy Light */
+    --bs-success: #2e7d32;
+    --bs-info: #0288d1;
+    --bs-warning: #f59e0b;
+    --bs-danger: #dc2626;
+    --bs-dark: #0f172a;
+    --bs-body-font-family: 'Inter', sans-serif;
+    
+    --gold: #d4af37;
+    --gold-light: #f4e4b4;
+    --gold-dark: #b8941f;
+    --navy: #1a2332;
+    --navy-dark: #0f172a;
+    --navy-light: #2a374c;
+    --light-bg: #f8fafc;
+}
+
+body {
+    background-color: var(--light-bg);
+    font-family: var(--bs-body-font-family);
+    color: #334155;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+/* ============================================
+   SIDEBAR - VELORIUM STYLE
+   ============================================ */
+.sidebar {
+    background-color: var(--navy-dark);
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 1000;
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sidebar .text-center h4 {
+    color: var(--gold) !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.sidebar .nav-link {
+    color: #cbd5e1;
+    padding: 0.8rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--gold);
+    background: rgba(255,255,255,0.02);
+}
+
+.sidebar .nav-link.active {
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 3px solid var(--gold);
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+}
+
+/* ============================================
+   CARDS & WIDGETS
+   ============================================ */
+.card, .stat-card {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.stat-card {
+    padding: 1.5rem;
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.card-header h5, .card-header .h5 {
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.card-header i {
+    color: var(--gold);
+}
+
+.card-body {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.card-body.p-0 {
+    padding: 0 !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card h6 {
+    font-family: 'Inter', sans-serif;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.stat-card h2 {
+    font-family: 'Inter', sans-serif;
+    color: var(--navy-dark);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-card.success .stat-icon { background: rgba(212, 175, 55, 0.1); color: var(--gold-dark); border: 1px solid rgba(212, 175, 55, 0.2); }
+.stat-card.info .stat-icon { background: rgba(26, 35, 50, 0.05); color: var(--navy); }
+.stat-card.warning .stat-icon { background: rgba(245, 158, 11, 0.1); color: #d97706; }
+.stat-card .stat-icon { background: rgba(15, 23, 42, 0.05); color: var(--navy-dark); }
+
+/* ============================================
+   TABLES & INVENTORY FIXES
+   ============================================ */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.table {
+    color: #334155;
+    vertical-align: middle;
+    margin-bottom: 0;
+    white-space: nowrap; /* Evitar que el contenido se apriete */
+    width: 100%;
+}
+
+.table thead th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Fix específico para el input de stock en la tabla de inventario */
+.input-group.input-group-sm {
+    width: 100px;
+    flex-wrap: nowrap;
+}
+
+.stock-input {
+    text-align: center;
+    border-radius: 4px 0 0 4px !important;
+}
+
+.input-group .btn-outline-primary {
+    border-radius: 0 4px 4px 0 !important;
+    padding: 0.25rem 0.5rem;
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-dark);
+    border-color: var(--gold-dark);
+    color: white;
+}
+
+/* Fix para botones outline pequeños (como el de guardar stock) */
+.btn-outline-primary {
+    color: var(--navy);
+    border-color: var(--navy);
+}
+.btn-outline-primary:hover {
+    background-color: var(--navy);
+    color: white;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        max-width: 100vw;
+    }
+}

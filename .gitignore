@@ -1,0 +1,122 @@
+# ============================================
+# ARCHIVOS DE CONFIGURACIÓN SENSIBLES
+# ============================================
+.env
+config/database.php
+
+# ============================================
+# ARCHIVOS DE SISTEMA OPERATIVO
+# ============================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ============================================
+# IDEs Y EDITORES
+# ============================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PhpStorm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# NetBeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+
+# Eclipse
+.project
+.buildpath
+.settings/
+
+# ============================================
+# DEPENDENCIAS
+# ============================================
+/vendor/
+/node_modules/
+composer.phar
+composer.lock
+package-lock.json
+yarn.lock
+
+# ============================================
+# LOGS Y TEMPORALES
+# ============================================
+*.log
+*.tmp
+*.temp
+*.cache
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+# ============================================
+# ARCHIVOS SUBIDOS
+# ============================================
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+/storage/uploads/products/*
+!/storage/uploads/products/.gitkeep
+/assets/images/*
+!/assets/images/default-watch.png
+!/assets/images/.gitkeep
+
+# ============================================
+# BACKUPS Y EXPORTACIONES
+# ============================================
+*.sql
+*.backup
+*.bak
+*.swp
+*.swo
+/backup/
+/exports/
+
+# ============================================
+# ARCHIVOS DE TESTING
+# ============================================
+/coverage/
+phpunit.xml
+.phpunit.result.cache
+
+# ============================================
+# OTROS
+# ============================================
+.htaccess.backup
+error_log
+php_errors.log
+debug.log
+access.log

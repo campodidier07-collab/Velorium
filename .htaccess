@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Si es un directorio o archivo existente, servirlo directamente (CSS, JS, imágenes, etc)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # De lo contrario, redirigir a index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
