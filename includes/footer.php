@@ -46,7 +46,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2025 Time & Style. Todos los derechos reservados.</p>
+                    <p class="mb-0">&copy; 2026 Velorium. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="#" class="me-3">Términos de Servicio</a>

@@ -79,11 +79,8 @@
             </div>
         </div>
         
-        <div class="border-t border-navy-light pt-8 mt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-slate-500">&copy; 2024 Velorium. Todos los derechos reservados.</p>
-            <div class="flex items-center gap-2 text-sm text-slate-500">
-                <span>Diseñado con</span> <i class="fas fa-heart text-red-500"></i> <span>para coleccionistas</span>
-            </div>
+        <div class="border-t border-navy-light pt-8 mt-8 text-center">
+            <p class="text-sm text-slate-500">&copy; 2026 Velorium. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

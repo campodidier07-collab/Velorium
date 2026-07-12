@@ -77,8 +77,14 @@ function confirmarAccion(event, element, mensaje) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link<?php if(basename($_SERVER['PHP_SELF']) == 'reportes.php') echo ' active'; ?>" href="reportes.php">
-                    <i class="fas fa-chart-line me-2"></i>Reportes
+                <a href="reportes.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'reportes.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-chart-bar me-2"></i> Reportes
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="configuracion.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'configuracion.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-cog me-2"></i> Configuración Web
                 </a>
             </li>
             <li class="nav-item">
