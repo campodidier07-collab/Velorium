@@ -420,4 +420,40 @@ class Pedido {
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    /**
+     * Obtener ventas por día (últimos N días)
+     */
+    public function obtenerVentasPorDia($dias = 30) {
+        $query = "SELECT DATE(fecha_pedido) as fecha, COUNT(id) as cantidad_pedidos, COALESCE(SUM(total), 0) as ingresos 
+                  FROM " . $this->table . " 
+                  WHERE estado NOT IN ('cancelado') 
+                  AND fecha_pedido >= DATE_SUB(CURRENT_DATE(), INTERVAL :dias DAY)
+                  GROUP BY DATE(fecha_pedido) 
+                  ORDER BY fecha ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':dias', $dias, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Obtener ventas por categoría
+     */
+    public function obtenerVentasPorCategoria() {
+        $query = "SELECT r.categoria, SUM(ip.cantidad) as total_vendidos, COALESCE(SUM(ip.subtotal), 0) as ingresos 
+                  FROM items_pedido ip 
+                  JOIN relojes r ON ip.reloj_id = r.id 
+                  JOIN " . $this->table . " p ON ip.pedido_id = p.id 
+                  WHERE p.estado NOT IN ('cancelado') 
+                  GROUP BY r.categoria 
+                  ORDER BY ingresos DESC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

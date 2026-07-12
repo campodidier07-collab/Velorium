@@ -77,6 +77,11 @@ function confirmarAccion(event, element, mensaje) {
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link<?php if(basename($_SERVER['PHP_SELF']) == 'reportes.php') echo ' active'; ?>" href="reportes.php">
+                    <i class="fas fa-chart-line me-2"></i>Reportes
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php" onclick="return confirmarAccion(event, this, '¿Está seguro de cerrar sesión?')">
                     <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
                 </a>

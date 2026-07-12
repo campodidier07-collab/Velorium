@@ -37,12 +37,41 @@ class AdminController {
         
         require_once 'views/admin/dashboard.php';
     }
-    
     /**
      * Reportes
      */
     public function reportes() {
         requireAdmin();
+        
+        require_once 'models/Pedido.php';
+        require_once 'models/Reloj.php';
+        
+        $pedido = new Pedido($this->db);
+        $reloj = new Reloj($this->db);
+        
+        // Obtener datos para gráficos
+        $ventasPorDia = $pedido->obtenerVentasPorDia(30);
+        $ventasPorCategoria = $pedido->obtenerVentasPorCategoria();
+        $topVendidos = $reloj->obtenerTopVendidos(5);
+        
+        // Datos generales
+        $totalIngresos = $pedido->obtenerIngresosUltimos(720); // 30 días
+        $totalPedidos = $pedido->contarTotal();
+        
+        // Preparar para JavaScript
+        $chartDias = [];
+        $chartIngresos = [];
+        foreach ($ventasPorDia as $v) {
+            $chartDias[] = $v['fecha'];
+            $chartIngresos[] = $v['ingresos'];
+        }
+        
+        $chartCategorias = [];
+        $chartVentasCat = [];
+        foreach ($ventasPorCategoria as $v) {
+            $chartCategorias[] = ucfirst($v['categoria']);
+            $chartVentasCat[] = $v['total_vendidos'];
+        }
         
         $titulo = 'Reportes y Estadísticas - Velorium';
         require_once 'views/admin/reportes.php';

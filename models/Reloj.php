@@ -196,4 +196,22 @@ class Reloj {
     public function buscar($termino) {
         return $this->obtenerTodos(['busqueda' => $termino]);
     }
+    
+    /**
+     * Obtener los productos más vendidos
+     */
+    public function obtenerTopVendidos($limit = 5) {
+        $query = "SELECT r.*, i.cantidad_vendida, i.cantidad_disponible 
+                  FROM " . $this->table . " r 
+                  JOIN inventario i ON r.id = i.reloj_id 
+                  WHERE i.cantidad_vendida > 0 
+                  ORDER BY i.cantidad_vendida DESC 
+                  LIMIT :limit";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
